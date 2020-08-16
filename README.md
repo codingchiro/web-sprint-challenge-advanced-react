@@ -30,14 +30,28 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+  The three steps to remember are "CCR". 
+  1)Declare your Class - we extend the Base React class from the React Library
+  2)Build out your Constructor
+  3)Don't forget to call Render 
+
 2. Describe the different phases of the component lifecycle.
 
-3. Demonstrate an understanding of class component lifecycle methods.
+  1) Birthing/ Mounting- which includes your Render method and componentDidMount.
 
-4. Define stateful logic.
+  2) Growth/Updating Phase- which includes setState that changes the component's state data and forces a re-render, and shouldComponentUpdate.
+
+  3) Death/ Unmounting Phase- which includes component being removed from screen and componnentWillUnmount.
+
+3. Demonstrate an understanding of class component lifecycle methods. 
+  Please see the above, it describes what happens during each phase.
+
+4. Define stateful logic. 
+  Stateful compononents keep track of changing data (and they re-render when the data changes), as opposed to stateless- which always render the same thing or render only what they are given via props. Class components can hold state, and state is a component-level storage object.
 
 5. Describe how to test a React component with React Testing Library.
 
+s
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
 ## Instructions
