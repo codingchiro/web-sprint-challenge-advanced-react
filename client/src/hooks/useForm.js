@@ -1,28 +1,37 @@
 // write your custom hook here to control your checkout form
 
-import { useState } from 'react';
+import { useState } from "react";
 
-const useForm = (callback) => {
-   
-    const [showSuccessMessage, setShowSuccessMessage]= useState(false);
+const initialValue = {
+  firstName: "",
+  lastName: "",
+  address: "",
+  city: "",
+  state: "",
+  zip: "",
+};
+
+const useForm = () => {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [values, setValues] = useState(initialValue);
 
-  const handleSubmit = (event) => {
-    if (event) event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setShowSuccessMessage(true);
-      callback();
   };
 
   const handleChanges = (event) => {
-    setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    setValues((values) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   return {
     handleChanges,
     handleSubmit,
     values,
-    
-  }
+  };
 };
 
 export default useForm;
