@@ -2,16 +2,7 @@
 
 import { useState } from "react";
 
-const initialValue = {
-  firstName: "",
-  lastName: "",
-  address: "",
-  city: "",
-  state: "",
-  zip: "",
-};
-
-const useForm = () => {
+const useForm = (initialValue) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [values, setValues] = useState(initialValue);
 
@@ -21,17 +12,20 @@ const useForm = () => {
   };
 
   const handleChanges = (event) => {
-    setValues((values) => ({
+    setValues({
       ...values,
       [event.target.name]: event.target.value,
-    }));
+    });
   };
 
-  return {
+  return [
+    //return array
+
+    values,
+    showSuccessMessage,
     handleChanges,
     handleSubmit,
-    values,
-  };
+  ];
 };
 
 export default useForm;
