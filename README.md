@@ -50,8 +50,9 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
   Stateful compononents keep track of changing data (and they re-render when the data changes), as opposed to stateless- which always render the same thing or render only what they are given via props. Class components can hold state, and state is a component-level storage object.
 
 5. Describe how to test a React component with React Testing Library.
+  We use an "arrange/act/assert" format for testing. Basically, we want to define what we are testing, asset what we expect the outcome to be a test to see if what we expect is true. We build tests to have know our code is working, and to have faith in the code we write.
 
-s
+
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
 ## Instructions
