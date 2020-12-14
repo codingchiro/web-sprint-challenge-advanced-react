@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen,  } from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
 import CheckoutForm from "./CheckoutForm";
 import App from '../App';
 
@@ -34,14 +35,23 @@ test("form shows success message on submit with form details", () => {
      render (<CheckoutForm />);
 
     //Act
+    const firstNameInput = screen.getByLabelText(/first name/i);
+    const lastNameInput = screen.getByLabelText(/last name/i);
+    const addressInput = screen.getByLabelText(/address/i);
 
+    const button = screen.getByRole('button', {name: /checkout/i});
+ 
+    //fill out form
+    userEvent.type(firstNameInput, 'Crystal');
+    userEvent.type(lastNameInput, 'Martin');
+    userEvent.type(addressInput, '2891 Twin Acres Dr');
 
-    const onSubmit = jest.fn();
-    const { getByTestId } = render(<CheckoutForm onSubmit= {onSubmit}/>);
+    //click button
+    userEvent.click(button);
     
-    fireEvent.submit(getByTestId("successMessage"));
-
     //Assert
-    expect(onSubmit).toHaveBeenCalled();
+    const successMessage = screen.getByTestId("successMessage");
+    
+    expect(successMessage).toBeInTheDocument();
 
 });
