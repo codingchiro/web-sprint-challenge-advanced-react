@@ -50,6 +50,12 @@ test("form shows success message on submit with form details", () => {
     userEvent.click(button);
     
     //Assert
+    const firstName = screen.getByText(/crystal/i);
+    expect(firstName).toBeInTheDocument;
+    const lastName = screen.getByText(/martin/i);
+    expect(lastName).toBeInTheDocument;
+    const address = screen.getByText(/2891 twin acres dr/i);
+    expect(address).toBeInTheDocument;
     const successMessage = screen.getByTestId("successMessage");
     
     expect(successMessage).toBeInTheDocument();
