@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import useForm from "../hooks/useForm";
+
 const initialValue = {
   firstName: "",
   lastName: "",
@@ -8,23 +10,25 @@ const initialValue = {
   state: "",
   zip: "",
 };
-
 // This form should be handled by a "useForm" custom hook
 // Build out the logic needed for a form custom hook (see the useForm.js file)
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues] = useState(initialValue);
+  //const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  //const [values, setValues] = useState(initialValue);
 
-  const handleChanges = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  //const CheckoutForm = () => {
+  const [ values, showSuccessMessage, handleChanges, handleSubmit ] = useForm(initialValue);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowSuccessMessage(true);
-  };
+  //const handleChanges = (e) => {
+  //  setValues({ ...values, [e.target.name]: e.target.value });
+  //};
+
+  //const handleSubmit = (e) => {
+  //  e.preventDefault();
+  //  setShowSuccessMessage(true);
+  //};
 
   return (
     <>
@@ -69,7 +73,7 @@ const CheckoutForm = (props) => {
         <button>Checkout</button>
       </form>
 
-      {showSuccessMessage && (
+      { showSuccessMessage && (
         <div className="success-message" data-testid="successMessage">
           <p>
             You have ordered some plants! Woo-hoo! <span role="img">🎉</span>
